@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Xamfire.Network
+namespace Xamfire.Json.Network
 {
     public interface INetworkService
     {

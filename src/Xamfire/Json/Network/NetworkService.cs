@@ -5,7 +5,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Xamfire.Network
+namespace Xamfire.Json.Network
 {
     public class NetworkService : INetworkService
     {

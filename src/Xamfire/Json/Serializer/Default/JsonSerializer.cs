@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Xamfire.Json.Serializer
+namespace Xamfire.Json.Serializer.Default
 {
     public class JsonSerializer : IJsonSerializer
     {
