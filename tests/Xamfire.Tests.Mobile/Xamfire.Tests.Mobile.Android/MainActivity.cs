@@ -18,8 +18,13 @@ namespace Xamfire.Tests.Mobile.Droid
             ToolbarResource = Resource.Layout.Toolbar;
 
             base.OnCreate(savedInstanceState);
+
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
+            Xamfire.Android.Xamfire.Initialization(this);
+
             LoadApplication(new App());
+
+           
         }
     }
 }

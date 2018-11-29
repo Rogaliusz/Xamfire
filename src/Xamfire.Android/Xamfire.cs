@@ -1,5 +1,8 @@
 ﻿using Android.Content;
 using System;
+using Xamfire.Android.Settings;
+using Xamfire.Settings;
+using XamfireShared = Xamfire.Shared.Xamfire;
 
 namespace Xamfire.Android
 {
@@ -7,7 +10,15 @@ namespace Xamfire.Android
     {
         public static void Initialization(Context context)
         {
+            if (context == null)
+            {
+                throw new ArgumentNullException(nameof(context));
+            }
 
+            XamfireShared.RegisterInstanceAsSingleton(context);
+            XamfireShared.RegisterFirebaseSettings<FirebaseSettings>();
+
+            XamfireShared.Initalization();
         }
     }
 }

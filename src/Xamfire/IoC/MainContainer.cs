@@ -14,17 +14,33 @@ namespace Xamfire.IoC
 
         }
 
-        public static TInstance ResolveInstance<TInstance>()
+        internal static TInstance ResolveInstance<TInstance>()
             where TInstance : class
         {
             return Container.Resolve<TInstance>();
         }
 
-        public static void ReplaceService<TAbstraction, TImplementation>()
+        internal static void ReplaceService<TAbstraction, TImplementation>()
             where TAbstraction : class
             where TImplementation : class, TAbstraction
         {
             Container.Register<TAbstraction, TImplementation>();
         }
+
+        internal static void RegisterSingleton<TAbstraction, TImplementation>()
+            where TAbstraction : class
+            where TImplementation : class, TAbstraction
+        {
+            Container.Register<TAbstraction, TImplementation>().AsSingleton();
+        }
+
+        internal static void RegisterInstanceAsSingleton<TInstance>(TInstance instance)
+            where TInstance : class
+        {
+            Container.Register(instance);
+        }
+
+
+
     }
 }
