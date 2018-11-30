@@ -6,6 +6,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using System.Reflection;
 
 namespace Xamfire.Tests.Mobile.Droid
 {
@@ -18,6 +19,8 @@ namespace Xamfire.Tests.Mobile.Droid
             ToolbarResource = Resource.Layout.Toolbar;
 
             base.OnCreate(savedInstanceState);
+
+            var stringResourceFields = typeof(Resource.String).GetFields(BindingFlags.Public | BindingFlags.Static | BindingFlags.FlattenHierarchy);
 
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             Xamfire.Android.Xamfire.Initialization(this);
