@@ -40,16 +40,14 @@ namespace Xamfire.Android.Settings
         {
             var contextAssembly = _context.GetType().Assembly;
             var regexPattern = new Regex(Resources.RESOURCE_STRING_NAMESPACE_PATTERN);
-
             var stringResourceFields = contextAssembly
                 .GetTypes()
                 .FirstOrDefault(x => !x.FullName.IsEmpty() && regexPattern.IsMatch(x.FullName))
                 .GetFields(BindingFlags.Public | BindingFlags.Static | BindingFlags.FlattenHierarchy);
 
             Url             = GetStringFromResource(Resources.URL, stringResourceFields);
-            ApiKey          = GetStringFromResource(Resources.API_KEY, stringResourceFields);
             StorageBucket   = GetStringFromResource(Resources.STORAGE_BUCKET, stringResourceFields);
-            ClientId        = GetStringFromResource(Resources.CLIENT_ID, stringResourceFields);
+            ApiKey          = GetStringFromResource(Resources.API_KEY, stringResourceFields);
         }
 
         private string GetStringFromResource(string resourceName, FieldInfo[] stringResourceFields)

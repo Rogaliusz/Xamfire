@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using TinyIoC;
+using Xamfire.Shared;
 
 namespace Xamfire.IoC
 {
@@ -11,7 +12,7 @@ namespace Xamfire.IoC
 
         public static void RegisterServices()
         {
-
+            RegisterSingleton<IAuthContext, IAuthContext>();
         }
 
         internal static TInstance ResolveInstance<TInstance>()

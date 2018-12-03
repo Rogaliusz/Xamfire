@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using TinyIoC;
+using Xamfire.Contexts.Auth;
 using Xamfire.Exceptions;
 using Xamfire.Exceptions.Settings;
 using Xamfire.IoC;
@@ -10,6 +12,22 @@ namespace Xamfire.Shared
 {
     public class Xamfire
     {
+        public static IAuthenticationContext AuthenticationContext
+        {
+            get
+            {
+                try
+                {
+                    return MainContainer.ResolveInstance<IAuthenticationContext>();
+                }
+                catch (TinyIoCResolutionException)
+                {
+                    throw new InvalidConfigException(ExceptionMessages.XAMFIRE_WAS_NOT_INITALIZED);
+                }
+            }
+        }
+
+
         static Xamfire()
         {
             MainContainer.RegisterServices();

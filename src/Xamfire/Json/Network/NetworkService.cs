@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using Xamfire.Json.Serializer.Document;
 
 namespace Xamfire.Json.Network
 {
@@ -11,6 +12,13 @@ namespace Xamfire.Json.Network
     {
         private static readonly HttpClient _httpClient = new HttpClient(_nativeMessageHandler);
         protected static readonly NativeMessageHandler _nativeMessageHandler = new NativeMessageHandler();
+
+        private readonly IJsonDocumentSerializer _jsonDocumentSerializer;
+
+        public NetworkService(IJsonDocumentSerializer jsonDocumentSerializer)
+        {
+            _jsonDocumentSerializer = jsonDocumentSerializer;
+        }
 
         public async Task<string> GetAsync(string address)
         {
@@ -20,7 +28,17 @@ namespace Xamfire.Json.Network
 
         public async Task PostAsync(string address, string json)
         {
+            await PostAsync<object>(address, GetPayload(json));
+        }
+
+        public async Task<TModel> PostAsync<TModel>(string address, object model)
+            => await PostAsync<TModel>(address, _jsonDocumentSerializer.Serialize(model));
+
+        public async Task<TModel> PostAsync<TModel>(string address, string json)
+        {
             var response = await _httpClient.PostAsync(address, GetPayload(json));
+            var responseJson = await response.Content.ReadAsStringAsync();
+            return _jsonDocumentSerializer.Deserialize<TModel>(responseJson);
         }
 
         public async Task PutAsync(string address, string json)
@@ -36,6 +54,11 @@ namespace Xamfire.Json.Network
         private HttpContent GetPayload(string json)
         {
             return new StringContent(json, Encoding.UTF8, "application/json");
+        }
+
+        public Task<TModel> GetAsync<TModel>(string address)
+        {
+            throw new NotImplementedException();
         }
     }
 }

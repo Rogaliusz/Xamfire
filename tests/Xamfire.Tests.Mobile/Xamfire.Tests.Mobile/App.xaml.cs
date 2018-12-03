@@ -11,7 +11,7 @@ namespace Xamfire.Tests.Mobile
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new MainView();
         }
 
         protected override void OnStart()

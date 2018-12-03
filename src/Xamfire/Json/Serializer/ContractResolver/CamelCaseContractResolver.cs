@@ -5,13 +5,13 @@ using System.Text;
 
 namespace Xamfire.Json.Serializer.ContractResolver
 {
-    public class SnakeCaseContractResolver : XamfireContractResolver
+    public class CamelCaseContractResolver : XamfireContractResolver
     {
         public override IDictionary<string, string> PropertMappings { get; internal set; }
 
-        public SnakeCaseContractResolver()
+        public CamelCaseContractResolver()
         {
-            NamingStrategy = new SnakeCaseNamingStrategy();
+            NamingStrategy = new CamelCaseNamingStrategy();
         }
     }
 }
