@@ -10,8 +10,9 @@ namespace Xamfire.Json.Network
 {
     public class NetworkService : INetworkService
     {
-        private static readonly HttpClient _httpClient = new HttpClient(_nativeMessageHandler);
-        protected static readonly NativeMessageHandler _nativeMessageHandler = new NativeMessageHandler();
+        private const string JSON_HEADER = "application/json";
+        private static readonly HttpClient _httpClient = new HttpClient();
+        private static readonly NativeMessageHandler _nativeMessageHandler = new NativeMessageHandler();
 
         private readonly IJsonDocumentSerializer _jsonDocumentSerializer;
 
@@ -53,7 +54,7 @@ namespace Xamfire.Json.Network
 
         private HttpContent GetPayload(string json)
         {
-            return new StringContent(json, Encoding.UTF8, "application/json");
+            return new StringContent(json, Encoding.UTF8, JSON_HEADER);
         }
 
         public Task<TModel> GetAsync<TModel>(string address)

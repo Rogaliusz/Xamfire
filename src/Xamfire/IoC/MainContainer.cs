@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 using TinyIoC;
 using Xamfire.Contexts.Auth;
+using Xamfire.Json.Network;
+using Xamfire.Json.Serializer.ContractResolver;
+using Xamfire.Json.Serializer.Document;
 using Xamfire.Shared;
 
 namespace Xamfire.IoC
@@ -13,7 +16,10 @@ namespace Xamfire.IoC
 
         public static void RegisterServices()
         {
+            RegisterSingleton<IJsonDocumentSerializer, JsonDocumentSerializer>();
             RegisterSingleton<IAuthenticationContext, AuthenticationContext>();
+            RegisterSingleton<INetworkService, NetworkService>();
+            RegisterSingleton<XamfireContractResolver, CamelCaseContractResolver>();
         }
 
         internal static TInstance ResolveInstance<TInstance>()

@@ -4,9 +4,21 @@
              x:Class="Xamfire.Tests.Mobile.Views.RegisterView">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms! Register"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Entry 
+                Placeholder="Email"
+                Text="{Binding Email}"
+                VerticalOptions="Start" 
+                HorizontalOptions="Center" />
+            <Entry 
+                Placeholder="Password"
+                Text="{Binding Password}"
+                IsPassword="True"
+                VerticalOptions="Start" 
+                HorizontalOptions="Center" />
+            <Button Text="Register new user"
+                VerticalOptions="Start" 
+                HorizontalOptions="Center"
+                Command="{Binding RegisterCommand}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

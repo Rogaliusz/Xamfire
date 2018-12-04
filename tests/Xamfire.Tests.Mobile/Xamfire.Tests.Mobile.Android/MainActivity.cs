@@ -21,6 +21,7 @@ namespace Xamfire.Tests.Mobile.Droid
 
             base.OnCreate(savedInstanceState);
 
+            Xamfire.Android.Xamfire.Initialization(this);
             Xamarin.Forms.Forms.Init(this, savedInstanceState);
 
             LoadApplication(new App());

@@ -2,6 +2,7 @@
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Xamfire.Tests.Mobile.ViewModels;
 using Xamfire.Tests.Mobile.Views;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
@@ -35,8 +36,8 @@ namespace Xamfire.Tests.Mobile
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterForNavigation<MainView>();
-            containerRegistry.RegisterForNavigation<RegisterView>();
-            containerRegistry.RegisterForNavigation<LoginView>();
+            containerRegistry.RegisterForNavigation<RegisterView, RegisterViewModel>();
+            containerRegistry.RegisterForNavigation<LoginView, LoginViewModel>();
         }
 
         protected override void OnInitialized()

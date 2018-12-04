@@ -20,7 +20,7 @@ namespace Xamfire.Shared
                 {
                     return MainContainer.ResolveInstance<IAuthenticationContext>();
                 }
-                catch (TinyIoCResolutionException)
+                catch (TinyIoCResolutionException ex)
                 {
                     throw new InvalidConfigException(ExceptionMessages.XAMFIRE_WAS_NOT_INITALIZED);
                 }
