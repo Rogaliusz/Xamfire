@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 using Xamfire.Contexts.Configurations;
-using Xamfire.Json.Network;
 using Xamfire.Json.Serializer;
+using Xamfire.Network.Service;
 using Xamfire.Settings;
 
 namespace Xamfire.Contexts

@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamfire.Json.Serializer.Document;
 
-namespace Xamfire.Json.Network
+namespace Xamfire.Network.Service
 {
     public class NetworkService : INetworkService
     {

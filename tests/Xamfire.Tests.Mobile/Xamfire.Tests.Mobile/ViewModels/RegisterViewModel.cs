@@ -24,8 +24,7 @@ namespace Xamfire.Tests.Mobile.ViewModels
 
         private async Task RegisterAsync()
         {
-
-            await Xamfire.Shared.Xamfire.AuthenticationContext.RegisterUserAsync(Email, Password);
+            await Xamfire.AuthenticationContext.RegisterUserAsync(Email, Password);
         }
 
 

@@ -8,7 +8,7 @@ using Xamfire.Exceptions.Settings;
 using Xamfire.IoC;
 using Xamfire.Settings;
 
-namespace Xamfire.Shared
+namespace Xamfire
 {
     public static class Xamfire
     {

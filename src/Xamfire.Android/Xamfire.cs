@@ -2,7 +2,7 @@
 using System;
 using Xamfire.Android.Settings;
 using Xamfire.Settings;
-using XamfireShared = Xamfire.Shared.Xamfire;
+using XamfireShared = Xamfire.Xamfire;
 
 namespace Xamfire.Android
 {

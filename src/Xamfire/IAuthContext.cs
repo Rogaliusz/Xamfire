@@ -1,4 +1,4 @@
-﻿namespace Xamfire.Shared
+﻿namespace Xamfire
 {
     public interface IAuthContext
     {
