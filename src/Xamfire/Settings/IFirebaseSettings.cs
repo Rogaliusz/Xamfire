@@ -14,6 +14,9 @@ namespace Xamfire.Settings
         string ClientId { get; }
         int ClientType { get; }
 
+        string UserToken { get; set; }
+        string UserRefreshToken { get; set; }
+
         void Load();
     }
 }

@@ -27,6 +27,5 @@ namespace Xamfire.Tests.Mobile.ViewModels
             await Xamfire.AuthenticationContext.RegisterUserAsync(Email, Password);
         }
 
-
     }
 }

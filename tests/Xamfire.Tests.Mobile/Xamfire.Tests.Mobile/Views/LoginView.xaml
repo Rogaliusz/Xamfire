@@ -4,9 +4,21 @@
              x:Class="Xamfire.Tests.Mobile.Views.LoginView">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Entry 
+                Placeholder="Email"
+                Text="{Binding Email}"
+                VerticalOptions="Start" 
+                HorizontalOptions="FillAndExpand" />
+            <Entry 
+                Placeholder="Password"
+                Text="{Binding Password}"
+                IsPassword="True"
+                VerticalOptions="Start" 
+                HorizontalOptions="FillAndExpand" />
+            <Button Text="Login new user"
+                VerticalOptions="Start" 
+                HorizontalOptions="FillAndExpand"
+                Command="{Binding LoginCommand}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

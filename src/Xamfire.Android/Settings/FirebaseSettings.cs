@@ -30,6 +30,8 @@ namespace Xamfire.Android.Settings
         public string ApiKey { get; private set; }
         public string ClientId { get; private set; }
         public int ClientType { get; private set; }
+        public string UserToken { get; set; }
+        public string UserRefreshToken { get; set; }
 
         public FirebaseSettings (Context context)
         {

@@ -15,7 +15,8 @@
 
         <Button Text="Login tests" 
            HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
+           VerticalOptions="CenterAndExpand"
+           Command="{navigation:NavigateTo 'LoginView'}" />
 
         <Button Text="Entry in authenticated area" 
            HorizontalOptions="Center"

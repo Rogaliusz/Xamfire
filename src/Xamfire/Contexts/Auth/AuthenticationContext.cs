@@ -35,8 +35,11 @@ namespace Xamfire.Contexts.Auth
 
             if (response.StatusCode != 200)
             {
-                throw new InvalidCredentialsException(ExceptionMessages.INVALID_CREDENTIALS);
+                throw new InvalidCredentialsException(response.Error?.Message);
             }
+
+            _settings.UserToken = response.IdToken;
+            _settings.UserRefreshToken = response.RefreshToken;
         }
 
         public async Task RegisterUserAsync(string email, string password)
