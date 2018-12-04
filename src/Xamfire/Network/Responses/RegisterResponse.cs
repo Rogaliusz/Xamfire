@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Xamfire.Network.Responses
 {
-    internal class RegisterResponse
+    internal class RegisterResponse : BaseResponse
     {
         public string Kind { get; set; }
         public string IdToken { get; set; }

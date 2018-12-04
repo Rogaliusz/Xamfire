@@ -8,16 +8,16 @@
                 Placeholder="Email"
                 Text="{Binding Email}"
                 VerticalOptions="Start" 
-                HorizontalOptions="Center" />
+                HorizontalOptions="CenterAndExpand" />
             <Entry 
                 Placeholder="Password"
                 Text="{Binding Password}"
                 IsPassword="True"
                 VerticalOptions="Start" 
-                HorizontalOptions="Center" />
+                HorizontalOptions="CenterAndExpand" />
             <Button Text="Register new user"
                 VerticalOptions="Start" 
-                HorizontalOptions="Center"
+                HorizontalOptions="CenterAndExpand"
                 Command="{Binding RegisterCommand}"/>
         </StackLayout>
     </ContentPage.Content>

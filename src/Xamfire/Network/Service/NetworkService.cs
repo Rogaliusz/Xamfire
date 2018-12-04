@@ -5,6 +5,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Xamfire.Json.Serializer.Document;
+using Xamfire.Network.Responses;
 
 namespace Xamfire.Network.Service
 {
@@ -39,7 +40,14 @@ namespace Xamfire.Network.Service
         {
             var response = await _httpClient.PostAsync(address, GetPayload(json));
             var responseJson = await response.Content.ReadAsStringAsync();
-            return _jsonDocumentSerializer.Deserialize<TModel>(responseJson);
+            var model = _jsonDocumentSerializer.Deserialize<TModel>(responseJson);
+
+            if (model is BaseResponse res)
+            {
+                res.StatusCode = (int) response.StatusCode;
+            }
+
+            return model;
         }
 
         public async Task PutAsync(string address, string json)

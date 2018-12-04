@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Xamfire.Network.Responses
 {
-    internal class LoginResponse
+    internal class LoginResponse : BaseResponse
     {
         public string Kind { get; set; }
 

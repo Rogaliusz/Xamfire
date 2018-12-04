@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using Xamfire.Exceptions;
+using Xamfire.Exceptions.Auth;
 using Xamfire.Json.Serializer.Document;
 using Xamfire.Network.Requests;
 using Xamfire.Network.Responses;
@@ -28,14 +30,24 @@ namespace Xamfire.Contexts.Auth
 
         public async Task LoginUserAsync(string email, string password)
         {
-            var registerRequest = new RegisterRequest(email, password, true);
-            var response = await _networkService.PostAsync<RegisterResponse>(string.Format(REGISTER_URL, _settings.ApiKey), registerRequest);
+            var registerRequest = new LoginRequest(email, password, true);
+            var response = await _networkService.PostAsync<LoginResponse>(string.Format(LOGIN_URL, _settings.ApiKey), registerRequest);
+
+            if (response.StatusCode != 200)
+            {
+                throw new InvalidCredentialsException(ExceptionMessages.INVALID_CREDENTIALS);
+            }
         }
 
         public async Task RegisterUserAsync(string email, string password)
         {
             var registerRequest = new RegisterRequest(email, password, true);
             var response = await _networkService.PostAsync<RegisterResponse>(string.Format(REGISTER_URL, _settings.ApiKey), registerRequest);
+
+            if (response.StatusCode != 200)
+            {
+                throw new FailRegisterException(response.Error?.Message);
+            }
         }
     }
 }
