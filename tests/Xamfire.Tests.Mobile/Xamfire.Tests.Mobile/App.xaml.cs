@@ -1,14 +1,17 @@
-﻿using System;
+﻿using Prism.Ioc;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Xamfire.Tests.Mobile.Views;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace Xamfire.Tests.Mobile
 {
-    public partial class App : Application
+    public partial class App 
     {
         public App()
         {
+            Initialize();
             InitializeComponent();
 
             MainPage = new MainView();
@@ -27,6 +30,17 @@ namespace Xamfire.Tests.Mobile
         protected override void OnResume()
         {
             // Handle when your app resumes
+        }
+
+        protected override void RegisterTypes(IContainerRegistry containerRegistry)
+        {
+            containerRegistry.RegisterForNavigation<MainView>();
+            containerRegistry.RegisterForNavigation<RegisterView>();
+            containerRegistry.RegisterForNavigation<LoginView>();
+        }
+
+        protected override void OnInitialized()
+        {
         }
     }
 }

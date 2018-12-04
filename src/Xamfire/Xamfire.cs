@@ -10,7 +10,7 @@ using Xamfire.Settings;
 
 namespace Xamfire.Shared
 {
-    public class Xamfire
+    public static class Xamfire
     {
         public static IAuthenticationContext AuthenticationContext
         {

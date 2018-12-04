@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
-namespace Xamfire.Tests.Mobile
+namespace Xamfire.Tests.Mobile.Views
 {
     public partial class MainView : ContentPage
     {

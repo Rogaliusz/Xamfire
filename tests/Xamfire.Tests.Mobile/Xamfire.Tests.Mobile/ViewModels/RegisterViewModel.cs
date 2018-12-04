@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Prism.Navigation;
 using Xamarin.Forms;
 
 namespace Xamfire.Tests.Mobile.ViewModels
@@ -16,6 +17,10 @@ namespace Xamfire.Tests.Mobile.ViewModels
         public string Password { get => _password; set => SetProperty(ref _password, value); }
 
         public ICommand SendRegisterRequestCommand => new Command( async () => await RegisterAsync());
+
+        public RegisterViewModel(INavigationService navigationService) : base(navigationService)
+        {
+        }
 
         private async Task RegisterAsync()
         {
