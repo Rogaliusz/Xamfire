@@ -12,6 +12,7 @@ namespace Xamfire.Network.Service
     public class NetworkService : INetworkService
     {
         private const string JSON_HEADER = "application/json";
+
         private static readonly HttpClient _httpClient = new HttpClient();
         private static readonly NativeMessageHandler _nativeMessageHandler = new NativeMessageHandler();
 
@@ -39,20 +40,36 @@ namespace Xamfire.Network.Service
         public async Task<TModel> PostAsync<TModel>(string address, string json)
         {
             var response = await _httpClient.PostAsync(address, GetPayload(json));
+            return await TranslateResponse<TModel>(response);
+        }
+
+        public async Task PutAsync(string address, string json)
+        {
+            await PutAsync<object>(address, json);
+        }
+
+        public async Task<TResponse> PutAsync<TResponse>(string address, object model)
+        {
+            return await PutAsync<TResponse>(address, _jsonDocumentSerializer.Serialize(model));
+        }
+
+        public async Task<TResponse> PutAsync<TResponse>(string address, string json)
+        {
+            var response = await _httpClient.PutAsync(address, GetPayload(json));
+            return await TranslateResponse<TResponse>(response);
+        }
+
+        private async Task<TModel> TranslateResponse<TModel>(HttpResponseMessage response)
+        {
             var responseJson = await response.Content.ReadAsStringAsync();
             var model = _jsonDocumentSerializer.Deserialize<TModel>(responseJson);
 
             if (model is BaseResponse res)
             {
-                res.StatusCode = (int) response.StatusCode;
+                res.StatusCode = (int)response.StatusCode;
             }
 
             return model;
-        }
-
-        public async Task PutAsync(string address, string json)
-        {
-            var response = await _httpClient.PutAsync(address, GetPayload(json));
         }
 
         public async Task DeleteAsync(string address)
@@ -66,6 +83,12 @@ namespace Xamfire.Network.Service
         }
 
         public Task<TModel> GetAsync<TModel>(string address)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public Task DeleteAsync<TResponse>(string address)
         {
             throw new NotImplementedException();
         }

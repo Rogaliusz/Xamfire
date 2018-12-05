@@ -15,7 +15,9 @@ namespace Xamfire.Network.Service
         Task<TResponse> PostAsync<TResponse>(string address, string json);
 
         Task PutAsync(string address, string json);
+        Task<TResponse> PutAsync<TResponse>(string address, object model);
+        Task<TResponse> PutAsync<TResponse>(string address, string json);
 
-        Task DeleteAsync(string address);
+        Task DeleteAsync<TResponse>(string address);
     }
 }
