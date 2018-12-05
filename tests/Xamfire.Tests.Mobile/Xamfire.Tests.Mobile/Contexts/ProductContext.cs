@@ -15,7 +15,8 @@ namespace Xamfire.Tests.Mobile.Contexts
                 .SetPropertyName(product => product.Name, "name_s")
                 .SetPropertyName(product => product.Description, "description")
                 .SetPropertyName(product => product.Id, "id")
-                .SetPropertyName(product => product.Count, "count");
+                .SetPropertyName(product => product.Count, "count")
+                .SetPrimaryKey(x => x.Id);
         }
     }
 }

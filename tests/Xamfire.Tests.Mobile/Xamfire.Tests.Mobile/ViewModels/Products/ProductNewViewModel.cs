@@ -31,7 +31,7 @@ namespace Xamfire.Tests.Mobile.ViewModels.Products
 
         private async Task SaveNewProductAsync()
         {
-            await _productContext.InsertAsync(Product);
+            await _productContext.InsertOrUpdateAsync(Product);
 
             var navigationParameter = new NavigationParameters
             {

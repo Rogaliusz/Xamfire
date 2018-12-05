@@ -32,12 +32,12 @@ namespace Xamfire.Contexts
 
         public abstract void Configure(IModelConfiguration<TModel> modelConfiguration);
 
-        public virtual async Task InsertAsync(TModel data)
+        public virtual async Task InsertOrUpdateAsync(TModel data)
         {
-            var address = GetUrl();
+            var address = _documentModelBuilder.GetDocumentPath(data);
             var document = _documentModelBuilder.BuildFirebaseDocument(data);
 
-            await _networkService.PostAsync(address, document);
+            await _networkService.PutAsync(address, document);
         }
 
         private string GetUrl()

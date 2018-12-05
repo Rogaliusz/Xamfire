@@ -9,8 +9,8 @@ namespace Xamfire.Contexts.Configurations
     public class ModelConfiguration<TModel> : IModelConfiguration<TModel>
     {
         public string DocumentPath { get; private set; }
-
         public IDictionary<string, string> PropertiesMappings { get; private set; }
+        public string PrimaryKeyPropertyName { get; private set; }
 
         public ModelConfiguration()
         {
@@ -27,6 +27,12 @@ namespace Xamfire.Contexts.Configurations
         {
             var propertyName = property.GetMemberInfo().Name;
             PropertiesMappings.Add(propertyName, firebaseFieldName);
+            return this;
+        }
+
+        public IModelConfiguration<TModel> SetPrimaryKey<TProperty>(Expression<Func<TModel, TProperty>> property)
+        {
+            PrimaryKeyPropertyName = property.GetMemberInfo().Name;
             return this;
         }
     }
