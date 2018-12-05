@@ -8,13 +8,25 @@ using System.Web;
 
 namespace Xamfire.Tests.Mobile.ViewModels
 {
-    public abstract class ViewModelBase : BindableBase
+    public abstract class ViewModelBase : BindableBase, INavigationAware
     {
         protected readonly INavigationService _navigationService;
 
         protected ViewModelBase(INavigationService navigationService)
         {
             _navigationService = navigationService;
+        }
+
+        public virtual void OnNavigatedFrom(INavigationParameters parameters)
+        {
+        }
+
+        public virtual void OnNavigatedTo(INavigationParameters parameters)
+        {
+        }
+
+        public virtual void OnNavigatingTo(INavigationParameters parameters)
+        {
         }
 
         protected async Task NavigateToViewModel<TViewModel>(IDictionary<string, object> @params = null)

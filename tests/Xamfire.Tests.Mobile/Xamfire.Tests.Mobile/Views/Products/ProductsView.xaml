@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:navigation="clr-namespace:Prism.Navigation.Xaml;assembly=Prism.Forms"
+             x:Class="Xamfire.Tests.Mobile.Views.ProductsView">
+    
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView ItemsSource="{Binding Items}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout>
+                                <Entry Text="{Binding Guid, Mode=TwoWay}" />
+                                <Entry Text="{Binding Name, Mode=TwoWay}"/>
+                                <Entry Text="{Binding Description, Mode=TwoWay}"/>
+                                <Entry Text="{Binding Count, Mode=TwoWay}"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button Text="Login tests" 
+                   HorizontalOptions="Center"
+                   VerticalOptions="CenterAndExpand"
+                   Command="{navigation:NavigateTo 'products-new'}" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

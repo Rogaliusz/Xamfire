@@ -8,7 +8,7 @@ namespace Xamfire.Contexts.Configurations
 {
     public interface IModelConfiguration<TModel>
     {
-        IModelConfiguration<TModel> SetPropertyName<TProperty>(Expression<Func<TProperty>> property, string firebaseFieldName);
+        IModelConfiguration<TModel> SetPropertyName<TProperty>(Expression<Func<TModel, TProperty>> property, string firebaseFieldName);
         IModelConfiguration<TModel> SetDocumentPath(string path);
 
         string DocumentPath { get; }

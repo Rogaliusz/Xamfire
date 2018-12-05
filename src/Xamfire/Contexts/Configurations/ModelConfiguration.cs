@@ -23,7 +23,7 @@ namespace Xamfire.Contexts.Configurations
             return this;
         }
 
-        public IModelConfiguration<TModel> SetPropertyName<TProperty>(Expression<Func<TProperty>> property, string firebaseFieldName)
+        public IModelConfiguration<TModel> SetPropertyName<TProperty>(Expression<Func<TModel, TProperty>> property, string firebaseFieldName)
         {
             var propertyName = property.GetMemberInfo().Name;
             PropertiesMappings.Add(propertyName, firebaseFieldName);

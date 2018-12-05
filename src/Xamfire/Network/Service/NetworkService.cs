@@ -30,7 +30,7 @@ namespace Xamfire.Network.Service
 
         public async Task PostAsync(string address, string json)
         {
-            await PostAsync<object>(address, GetPayload(json));
+            await PostAsync<object>(address, json);
         }
 
         public async Task<TModel> PostAsync<TModel>(string address, object model)

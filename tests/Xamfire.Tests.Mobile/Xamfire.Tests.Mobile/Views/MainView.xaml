@@ -20,7 +20,8 @@
 
         <Button Text="Entry in authenticated area" 
            HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
+           VerticalOptions="CenterAndExpand" 
+           Command="{navigation:NavigateTo 'products'}" />
 
     </StackLayout>
 

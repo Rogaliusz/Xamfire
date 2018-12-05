@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Xamfire.Tests.Mobile.Views.Products.ProductNewView">
+    <ContentPage.Content>
+        <StackLayout>
+            <Entry 
+                Placeholder="Name"
+                Text="{Binding Product.Name}"
+                VerticalOptions="Start" 
+                HorizontalOptions="FillAndExpand" />
+            <Entry 
+                Placeholder="Description"
+                Text="{Binding Product.Description}"
+                IsPassword="True"
+                VerticalOptions="Start" 
+                HorizontalOptions="FillAndExpand" />
+            <Entry 
+                Placeholder="Count"
+                Text="{Binding Product.Count}"
+                VerticalOptions="Start" 
+                HorizontalOptions="FillAndExpand" />
+            <Button Text="Add new product"
+                VerticalOptions="Start" 
+                HorizontalOptions="FillAndExpand"
+                Command="{Binding SaveNewProductCommand}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
