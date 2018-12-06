@@ -11,6 +11,7 @@ namespace Xamfire.Contexts.Builders
         string BuildFirebaseDocument(TModel model);
         TModel BuildModel(string document, string address);
         string GetDocumentPath();
+        string GetDocumentPath(object key);
         string GetDocumentPath(TModel model);
     }
 }

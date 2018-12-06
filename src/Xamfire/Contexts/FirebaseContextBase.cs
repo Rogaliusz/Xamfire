@@ -40,6 +40,15 @@ namespace Xamfire.Contexts
             await _networkService.PutAsync(address, document);
         }
 
+        public virtual async Task<TModel> GetAsync(object key)
+        {
+            var address = _documentModelBuilder.GetDocumentPath(key);
+            var document = await _networkService.GetAsync(address);
+            var model = _documentModelBuilder.BuildModel(document, address);
+
+            return model;
+        }
+
         public virtual async Task<IEnumerable<TModel>> GetAllAsync()
         {
             var address = _documentModelBuilder.GetDocumentPath();

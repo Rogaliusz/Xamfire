@@ -109,6 +109,11 @@ namespace Xamfire.Contexts.Builders
             return $"{_firebaseSettings.Url}/{_modelConfiguration.DocumentPath}/{primaryKey}.json/?auth={_firebaseSettings.UserToken}";
         }
 
+        public string GetDocumentPath(object key)
+        {
+            return $"{_firebaseSettings.Url}/{_modelConfiguration.DocumentPath}/{key}.json/?auth={_firebaseSettings.UserToken}";
+        }
+
         public string GetDocumentPath()
         {
             return $"{_firebaseSettings.Url}/{_modelConfiguration.DocumentPath}.json/?auth={_firebaseSettings.UserToken}";

@@ -51,6 +51,9 @@ namespace Xamfire.Contexts.Auth
             {
                 throw new FailRegisterException(response.Error?.Message);
             }
+
+            _settings.UserToken = response.IdToken;
+            _settings.UserRefreshToken = response.RefreshToken;
         }
     }
 }
