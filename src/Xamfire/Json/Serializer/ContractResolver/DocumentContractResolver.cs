@@ -18,9 +18,20 @@ namespace Xamfire.Json.Serializer.ContractResolver
         }
 
         protected override JsonProperty CreateProperty(MemberInfo member, MemberSerialization memberSerialization)
-        {
-           
-            return base.CreateProperty(member, memberSerialization);
+        {   
+            var property =  base.CreateProperty(member, memberSerialization);
+            var primaryKeyName = _modelConfiguration.PrimaryKeyPropertyName;
+            
+            if (primaryKeyName == member.Name)
+            {
+                property.Ignored = true;
+            } 
+            else if (_modelConfiguration.PropertiesMappings.ContainsKey(member.Name))
+            {
+                property.PropertyName = _modelConfiguration.PropertiesMappings[member.Name];
+            }
+
+            return property;
         }
 
         public override IDictionary<string, string> PropertMappings { get; internal set; }
