@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\src\Xamfire\Xamfire.csproj" />
+    <ProjectReference Include="..\..\Xamfire.Tests.Common\Xamfire.Tests.Common.csproj" />
   </ItemGroup>
 
   <ItemGroup>

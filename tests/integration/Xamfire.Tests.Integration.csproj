@@ -10,16 +10,25 @@
     <PackageReference Include="FluentAssertions" Version="5.5.3" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.9.0" />
     <PackageReference Include="Moq" Version="4.10.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
     <PackageReference Include="xunit" Version="2.4.0" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Builders\" />
+    <Folder Include="Contexts\" />
+    <Folder Include="ModelConfigurations\" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\Xamfire\Xamfire.csproj" />
+    <ProjectReference Include="..\Xamfire.Tests.Common\Xamfire.Tests.Common.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Samples\ProductDocument.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

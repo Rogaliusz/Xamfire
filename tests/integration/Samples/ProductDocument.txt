@@ -1,0 +1,5 @@
+﻿{
+  "Name": "Awesome product",
+  "Description": "My awesome product for first milion Polskich dolarów",
+  "Count": 11
+}

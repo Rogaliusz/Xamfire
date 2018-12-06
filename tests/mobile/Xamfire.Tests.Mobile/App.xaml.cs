@@ -2,7 +2,7 @@
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using Xamfire.Tests.Mobile.Contexts;
+using Xamfire.Tests.Common.Contexts;
 using Xamfire.Tests.Mobile.ViewModels;
 using Xamfire.Tests.Mobile.ViewModels.Products;
 using Xamfire.Tests.Mobile.Views;

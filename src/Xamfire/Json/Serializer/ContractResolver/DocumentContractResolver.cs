@@ -23,6 +23,6 @@ namespace Xamfire.Json.Serializer.ContractResolver
             return base.CreateProperty(member, memberSerialization);
         }
 
-        public override IDictionary<string, string> PropertMappings { get => throw new NotImplementedException(); internal set => throw new NotImplementedException(); }
+        public override IDictionary<string, string> PropertMappings { get; internal set; }
     }
 }
