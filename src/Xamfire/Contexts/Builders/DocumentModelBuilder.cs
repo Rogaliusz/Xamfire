@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using TinyIoC;
 using Xamfire.Contexts.Configurations;
 using Xamfire.Exceptions;
 using Xamfire.Exceptions.Settings;
 using Xamfire.Extensions;
+using Xamfire.Json.Serializer.ContractResolver;
 using Xamfire.Json.Serializer.Default;
 using Xamfire.Json.Serializer.Document;
 using Xamfire.Settings;
@@ -28,16 +30,16 @@ namespace Xamfire.Contexts.Builders
         {
             _modelConfiguration = modelConfiguration;
 
-
-
             return this;
         }
 
         public string BuildFirebaseDocument(TModel model)
         {
-            var customProperiesMappings = _modelConfiguration.PropertiesMappings;
+            var dict = new Dictionary<string, object>() { { "modelConfiguration", _modelConfiguration } };
+            var ctrParams = new NamedParameterOverloads(dict);
+            var contractResolver = IoC.MainContainer.ResolveInstance<DocumentContractResolver<TModel>>(ctrParams);
 
-            return _jsonDocumentSerializer.SetCustomPropertiesMappings(customProperiesMappings)
+            return _jsonDocumentSerializer.SetContractResolver(contractResolver)
                 .Serialize(model);
         }
 

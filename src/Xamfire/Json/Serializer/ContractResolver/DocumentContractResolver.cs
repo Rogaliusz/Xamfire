@@ -14,6 +14,8 @@ namespace Xamfire.Json.Serializer.ContractResolver
 
         public DocumentContractResolver(IModelConfiguration<TModel> modelConfiguration)
         {
+            NamingStrategy = new CamelCaseNamingStrategy();
+
             _modelConfiguration = modelConfiguration;
         }
 
@@ -33,7 +35,5 @@ namespace Xamfire.Json.Serializer.ContractResolver
 
             return property;
         }
-
-        public override IDictionary<string, string> PropertMappings { get; internal set; }
     }
 }

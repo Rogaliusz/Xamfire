@@ -19,12 +19,18 @@ namespace Xamfire.IoC
         {
             RegisterSingleton<IAuthenticationContext, AuthenticationContext>();
             RegisterSingleton<INetworkService, NetworkService>();
-            RegisterSingleton<XamfireContractResolver, CamelCaseContractResolver>();
 
             Container.Register<IJsonDocumentSerializer, JsonDocumentSerializer>().AsMultiInstance();
 
             Container.Register(typeof(IDocumentModelBuilder<>), typeof(DocumentModelBuilder<>)).AsMultiInstance();
             Container.Register(typeof(IModelConfiguration<>), typeof(ModelConfiguration<>)).AsMultiInstance();
+            Container.Register(typeof(XamfireContractResolver), typeof(DocumentContractResolver<>)).AsMultiInstance();
+        }
+
+        internal static TInstance ResolveInstance<TInstance>(NamedParameterOverloads @params)
+            where TInstance : class
+        {
+            return Container.Resolve<TInstance>(@params);
         }
 
         internal static TInstance ResolveInstance<TInstance>()

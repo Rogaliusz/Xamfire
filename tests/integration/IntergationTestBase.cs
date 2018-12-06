@@ -18,7 +18,7 @@ namespace Xamfire.Tests.Integration
         {
             var modelConfiguration = GetModelConfiguration();
             var contactResolver = new DocumentContractResolver<TModel>(modelConfiguration);
-            var jsonSerializer = new JsonDocumentSerializer(contactResolver);
+            var jsonSerializer = new JsonDocumentSerializer();
             var documentBuilder = new DocumentModelBuilder<TModel>(jsonSerializer, FirebaseSettingsMock);
 
             return documentBuilder;

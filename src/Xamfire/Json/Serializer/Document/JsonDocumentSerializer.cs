@@ -14,12 +14,7 @@ namespace Xamfire.Json.Serializer.Document
             Formatting = Formatting.Indented
         };
 
-        private readonly XamfireContractResolver _contractResolver;
-
-        public JsonDocumentSerializer(XamfireContractResolver contractResolver)
-        {
-            _contractResolver = contractResolver;
-        }
+        private XamfireContractResolver _contractResolver;
 
         public T Deserialize<T>(string json)
         {
@@ -31,9 +26,10 @@ namespace Xamfire.Json.Serializer.Document
             return JsonConvert.SerializeObject(model, JsonSettings);
         }
 
-        public IJsonDocumentSerializer SetCustomPropertiesMappings(IDictionary<string, string> propertiesMappings)
+        public IJsonDocumentSerializer SetContractResolver(XamfireContractResolver xamfireContractResolver)
         {
-            _contractResolver.PropertMappings = propertiesMappings;
+            _contractResolver = xamfireContractResolver;
+
             return this;
         }
     }

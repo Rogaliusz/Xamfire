@@ -1,5 +1,5 @@
 ﻿{
-  "Name": "Awesome product",
-  "Description": "My awesome product for first milion Polskich dolarów",
-  "Count": 11
+  "name": "Awesome product",
+  "description": "My awesome product for first milion Polskich dolarów",
+  "count": 11
 }
