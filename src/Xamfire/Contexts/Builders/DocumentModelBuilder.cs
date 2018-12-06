@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.RegularExpressions;
 using TinyIoC;
 using Xamfire.Contexts.Configurations;
 using Xamfire.Exceptions;
@@ -33,14 +34,67 @@ namespace Xamfire.Contexts.Builders
             return this;
         }
 
+        public TModel BuildModel(string document, string address)
+        {
+            var contractResolver = GetContractResolver();
+            var model = _jsonDocumentSerializer.SetContractResolver(contractResolver)
+                .Deserialize<TModel>(document);
+
+            var id = GetId(address);
+            if( id != null)
+            {
+                SetIdToModel(id, model);
+            }
+
+            return model;
+        }
+
+        private string GetId(string address)
+        {
+            var regexPattern = new Regex("/.[^/]*.json");
+
+            if (regexPattern.IsMatch(address))
+            {
+                var match = regexPattern.Match(address);
+                var beforeConvert = match.Value;
+                return beforeConvert.Substring(1).Replace(".json", "");
+            }
+
+            return null;
+        }
+
+        private void SetIdToModel(string id, TModel model)
+        {
+            var property = typeof(TModel).GetProperty(_modelConfiguration.PrimaryKeyPropertyName);
+
+            if (property.PropertyType == typeof(Guid))
+            {
+                property.SetValue(model, new Guid(id));
+            } 
+            else if (property.PropertyType == typeof(int))
+            {
+                property.SetValue(model, int.Parse(id));
+            }
+            else if (property.PropertyType == typeof(string))
+            {
+                property.SetValue(model, id);
+            }
+        }
+
         public string BuildFirebaseDocument(TModel model)
+        {
+            var contractResolver = GetContractResolver();
+
+            return _jsonDocumentSerializer.SetContractResolver(contractResolver)
+                .Serialize(model);
+        }
+
+        private DocumentContractResolver<TModel> GetContractResolver()
         {
             var dict = new Dictionary<string, object>() { { "modelConfiguration", _modelConfiguration } };
             var ctrParams = new NamedParameterOverloads(dict);
             var contractResolver = IoC.MainContainer.ResolveInstance<DocumentContractResolver<TModel>>(ctrParams);
-
-            return _jsonDocumentSerializer.SetContractResolver(contractResolver)
-                .Serialize(model);
+            return contractResolver;
         }
 
         public string GetDocumentPath(TModel model)

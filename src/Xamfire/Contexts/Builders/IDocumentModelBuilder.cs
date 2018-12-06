@@ -9,6 +9,7 @@ namespace Xamfire.Contexts.Builders
     {
         IDocumentModelBuilder<TModel> SetModelConfiguration(IModelConfiguration<TModel> modelConfiguration);
         string BuildFirebaseDocument(TModel model);
+        TModel BuildModel(string document, string address);
         string GetDocumentPath();
         string GetDocumentPath(TModel model);
     }

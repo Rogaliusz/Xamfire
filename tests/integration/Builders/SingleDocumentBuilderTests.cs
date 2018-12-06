@@ -13,7 +13,7 @@ using Xunit;
 
 namespace Xamfire.Tests.Integration.Builders
 {
-    public class DocumentBuilderTests : IntergationTestBase<Product>
+    public class SingleDocumentBuilderTests : IntergationTestBase<Product>
     {
         [Fact]
         public void document_builder_should_generate_correct_insert_path()
