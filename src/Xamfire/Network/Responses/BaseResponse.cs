@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -12,13 +13,15 @@ namespace Xamfire.Network.Responses
 
         public string Message { get; set; }
 
+        [JsonProperty("error")]
         public Error Error { get; set; }
     }
 
     public class Error
     {
+        [JsonProperty("message")]
         public string Message { get; set; }
-
+        [JsonProperty("code")]
         public int Code { get; set; }
     }
 }

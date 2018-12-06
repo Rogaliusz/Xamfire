@@ -8,7 +8,7 @@ namespace Xamfire.Json.Serializer.Default
     {
         public JsonSerializer()
         {
-
+            
         }
 
         public T Deserialize<T>(string json)
