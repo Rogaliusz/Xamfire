@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Prism.Commands;
 using Prism.Navigation;
-using Xamfire.Tests.Mobile.Contexts;
-using Xamfire.Tests.Mobile.Models;
+using Xamfire.Tests.Common.Contexts;
+using Xamfire.Tests.Common.Models;
 
 namespace Xamfire.Tests.Mobile.ViewModels.Products
 {

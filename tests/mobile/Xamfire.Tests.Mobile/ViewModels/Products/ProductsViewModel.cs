@@ -4,8 +4,8 @@ using System.Collections.ObjectModel;
 using System.Text;
 using System.Threading.Tasks;
 using Prism.Navigation;
-using Xamfire.Tests.Mobile.Contexts;
-using Xamfire.Tests.Mobile.Models;
+using Xamfire.Tests.Common.Contexts;
+using Xamfire.Tests.Common.Models;
 
 namespace Xamfire.Tests.Mobile.ViewModels
 {

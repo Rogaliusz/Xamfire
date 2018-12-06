@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 using Xamfire.Contexts;
 using Xamfire.Contexts.Configurations;
-using Xamfire.Tests.Mobile.Models;
+using Xamfire.Tests.Common.Models;
 
-namespace Xamfire.Tests.Mobile.Contexts
+namespace Xamfire.Tests.Common.Contexts
 {
     public class ProductContext : FirebaseContextBase<Product>
     {

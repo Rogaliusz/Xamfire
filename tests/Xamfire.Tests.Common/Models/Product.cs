@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Xamfire.Tests.Mobile.Models
+namespace Xamfire.Tests.Common.Models
 {
     public class Product
     {
