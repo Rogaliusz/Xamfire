@@ -15,6 +15,12 @@ namespace Xamfire.Tests.Mobile.ViewModels
         protected ViewModelBase(INavigationService navigationService)
         {
             _navigationService = navigationService;
+
+            InitalizeAsync();
+        }
+
+        public virtual async Task InitalizeAsync()
+        {
         }
 
         public virtual void OnNavigatedFrom(INavigationParameters parameters)

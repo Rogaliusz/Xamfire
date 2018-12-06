@@ -40,9 +40,12 @@ namespace Xamfire.Contexts
             await _networkService.PutAsync(address, document);
         }
 
-        private string GetUrl()
+        public virtual async Task<IEnumerable<TModel>> GetAllAsync()
         {
-            return $"{_firebaseSettings.Url}/{_modelConfiguration.DocumentPath}?auth={_firebaseSettings.UserToken}";
+            var address = _documentModelBuilder.GetDocumentPath();
+
+            return await _networkService.GetAsync<IEnumerable<TModel>>(address);
         }
+
     }
 }

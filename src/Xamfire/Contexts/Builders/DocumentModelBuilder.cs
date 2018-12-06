@@ -27,6 +27,9 @@ namespace Xamfire.Contexts.Builders
         public IDocumentModelBuilder<TModel> SetModelConfiguration(IModelConfiguration<TModel> modelConfiguration)
         {
             _modelConfiguration = modelConfiguration;
+
+
+
             return this;
         }
 
@@ -48,6 +51,11 @@ namespace Xamfire.Contexts.Builders
                 .GetValue(model);
 
             return $"{_firebaseSettings.Url}/{_modelConfiguration.DocumentPath}/{primaryKey}.json/?auth={_firebaseSettings.UserToken}";
+        }
+
+        public string GetDocumentPath()
+        {
+            return $"{_firebaseSettings.Url}/{_modelConfiguration.DocumentPath}.json/?auth={_firebaseSettings.UserToken}";
         }
     }
 }

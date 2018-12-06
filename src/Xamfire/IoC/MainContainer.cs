@@ -17,10 +17,11 @@ namespace Xamfire.IoC
 
         public static void RegisterServices()
         {
-            RegisterSingleton<IJsonDocumentSerializer, JsonDocumentSerializer>();
             RegisterSingleton<IAuthenticationContext, AuthenticationContext>();
             RegisterSingleton<INetworkService, NetworkService>();
             RegisterSingleton<XamfireContractResolver, CamelCaseContractResolver>();
+
+            Container.Register<IJsonDocumentSerializer, JsonDocumentSerializer>().AsMultiInstance();
 
             Container.Register(typeof(IDocumentModelBuilder<>), typeof(DocumentModelBuilder<>)).AsMultiInstance();
             Container.Register(typeof(IModelConfiguration<>), typeof(ModelConfiguration<>)).AsMultiInstance();

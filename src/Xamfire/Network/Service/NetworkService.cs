@@ -29,6 +29,14 @@ namespace Xamfire.Network.Service
             return await response.Content.ReadAsStringAsync();
         }
 
+        public async Task<TModel> GetAsync<TModel>(string address)
+        {
+            var response = await _httpClient.GetAsync(address);
+            var xamfireResponse = await TranslateResponse<ModelResponse<TModel>>(response);
+
+            return xamfireResponse.Model;
+        }
+
         public async Task PostAsync(string address, string json)
         {
             await PostAsync<object>(address, json);
@@ -81,12 +89,6 @@ namespace Xamfire.Network.Service
         {
             return new StringContent(json, Encoding.UTF8, JSON_HEADER);
         }
-
-        public Task<TModel> GetAsync<TModel>(string address)
-        {
-            throw new NotImplementedException();
-        }
-
 
         public Task DeleteAsync<TResponse>(string address)
         {
