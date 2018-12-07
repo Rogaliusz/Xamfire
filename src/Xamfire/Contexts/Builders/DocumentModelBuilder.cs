@@ -41,7 +41,7 @@ namespace Xamfire.Contexts.Builders
                 .Deserialize<TModel>(document);
 
             var id = GetId(address);
-            if( id != null)
+            if(id != null && model != null)
             {
                 SetIdToModel(id, model);
             }

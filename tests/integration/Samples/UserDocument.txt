@@ -1,0 +1,20 @@
+﻿{
+  "name": "Janusz",
+  "products": [
+    {
+      "name": "Awesome product",
+      "description": "My awesome product for first milion Polskich dolarów",
+      "count": 11
+    },
+    {
+      "name": "Super product",
+      "description": "My super product for first milion Polskich dolarów",
+      "count": 0
+    },
+    {
+      "name": "Oh Product",
+      "description": "My oh product for first milion Polskich dolarów",
+      "count": 5
+    }
+  ]
+}

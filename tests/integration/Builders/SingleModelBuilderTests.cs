@@ -9,7 +9,7 @@ using Xunit;
 
 namespace Xamfire.Tests.Integration.Builders
 {
-    public class SingleModelBuilderTests : IntergationTestBase<Product>
+    public class SingleModelBuilderTests : IntegrationTestBase<Product>
     {
         [Fact]
         public void document_builder_should_generate_correct_json()

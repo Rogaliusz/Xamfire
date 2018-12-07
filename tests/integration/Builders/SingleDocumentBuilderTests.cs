@@ -9,11 +9,12 @@ using Xamfire.Json.Serializer.ContractResolver;
 using Xamfire.Json.Serializer.Document;
 using Xamfire.Tests.Common.Models;
 using Xamfire.Tests.Integration.Mock;
+using Xamfire.Tests.Integration.Samples;
 using Xunit;
 
 namespace Xamfire.Tests.Integration.Builders
 {
-    public class SingleDocumentBuilderTests : IntergationTestBase<Product>
+    public class SingleDocumentBuilderTests : IntegrationTestBase<Product>
     {
         [Fact]
         public void document_builder_should_generate_correct_insert_path()
@@ -42,7 +43,7 @@ namespace Xamfire.Tests.Integration.Builders
         }
 
         [Fact]
-        public void document_builder_should_generate_correct_json()
+        public void document_builder_for_simple_should_generate_correct_json()
         {
             var documentBuilder = GetBuilder();
             var product = Products.SamplesProducts[0];

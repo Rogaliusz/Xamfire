@@ -10,7 +10,7 @@ using Xamfire.Tests.Integration.Mock;
 
 namespace Xamfire.Tests.Integration
 {
-    public abstract class IntergationTestBase<TModel>
+    public abstract class IntegrationTestBase<TModel>
     {
         protected static IFirebaseSettings FirebaseSettingsMock { get; private set; } = new FirebaseSettingsMock();
 
