@@ -3,13 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using Xamfire.Contexts.Builders;
-using Xamfire.Contexts.Configurations;
-using Xamfire.Json.Serializer.ContractResolver;
-using Xamfire.Json.Serializer.Document;
+using Xamfire.Document.Configurations;
 using Xamfire.Tests.Common.Models;
-using Xamfire.Tests.Integration.Mock;
-using Xamfire.Tests.Integration.Samples;
 using Xunit;
 
 namespace Xamfire.Tests.Integration.Builders
@@ -56,7 +51,7 @@ namespace Xamfire.Tests.Integration.Builders
             json.Should().Be(expectedJson);
         }
 
-        protected override IModelConfiguration<Product> GetModelConfiguration()
+        protected override IDocumentConfiguration<Product> GetModelConfiguration()
         {
             return new ModelConfiguration<Product>()
                 .SetDocumentPath("products")

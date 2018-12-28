@@ -1,33 +1,32 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
 using TinyIoC;
-using Xamfire.Contexts.Configurations;
+using Xamfire.Document.Configurations;
+using Xamfire.Document.ContractResolver;
+using Xamfire.Document.Serializer;
 using Xamfire.Exceptions;
 using Xamfire.Exceptions.Settings;
 using Xamfire.Extensions;
-using Xamfire.Json.Serializer.ContractResolver;
-using Xamfire.Json.Serializer.Default;
-using Xamfire.Json.Serializer.Document;
 using Xamfire.Settings;
 
-namespace Xamfire.Contexts.Builders
+namespace Xamfire.Document.Builders
 {
     public class DocumentModelBuilder<TModel> : IDocumentModelBuilder<TModel>
     {
-        private readonly IJsonDocumentSerializer _jsonDocumentSerializer;
+        private readonly IDocumentSerializer _jsonDocumentSerializer;
         private readonly IFirebaseSettings _firebaseSettings;
 
-        private IModelConfiguration<TModel> _modelConfiguration;
+        private IDocumentConfiguration<TModel> _modelConfiguration;
 
-        public DocumentModelBuilder(IJsonDocumentSerializer jsonDocumentSerializer, IFirebaseSettings firebaseSettings)
+        public DocumentModelBuilder(IDocumentSerializer jsonDocumentSerializer, IFirebaseSettings firebaseSettings)
         {
             _jsonDocumentSerializer = jsonDocumentSerializer;
             _firebaseSettings = firebaseSettings;
         }
 
-        public IDocumentModelBuilder<TModel> SetModelConfiguration(IModelConfiguration<TModel> modelConfiguration)
+        public IDocumentModelBuilder<TModel> SetModelConfiguration(IDocumentConfiguration<TModel> modelConfiguration)
         {
             _modelConfiguration = modelConfiguration;
 

@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Xamfire.Contexts.Configurations;
+using Xamfire.Document.Configurations;
 
-namespace Xamfire.Contexts.Builders
+namespace Xamfire.Document.Builders
 {
     public interface IDocumentModelBuilder<TModel>
     {
-        IDocumentModelBuilder<TModel> SetModelConfiguration(IModelConfiguration<TModel> modelConfiguration);
+        IDocumentModelBuilder<TModel> SetModelConfiguration(IDocumentConfiguration<TModel> modelConfiguration);
         string BuildFirebaseDocument(TModel model);
         TModel BuildModel(string document, string address);
         string GetDocumentPath();

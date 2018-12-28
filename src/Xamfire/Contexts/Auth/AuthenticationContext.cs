@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-using Xamfire.Exceptions;
+﻿using System.Threading.Tasks;
+using Xamfire.Document.Serializer;
 using Xamfire.Exceptions.Auth;
-using Xamfire.Json.Serializer.Document;
 using Xamfire.Network.Requests;
 using Xamfire.Network.Responses;
 using Xamfire.Network.Service;
@@ -19,9 +15,9 @@ namespace Xamfire.Contexts.Auth
 
         private readonly IFirebaseSettings _settings;
         private readonly INetworkService _networkService;
-        private readonly IJsonDocumentSerializer _jsonSerializer;
+        private readonly IDocumentSerializer _jsonSerializer;
 
-        public AuthenticationContext(IFirebaseSettings settings, INetworkService networkService, IJsonDocumentSerializer jsonSerializer)
+        public AuthenticationContext(IFirebaseSettings settings, INetworkService networkService, IDocumentSerializer jsonSerializer)
         {
             _settings = settings;
             _networkService = networkService;
@@ -51,9 +47,6 @@ namespace Xamfire.Contexts.Auth
             {
                 throw new FailRegisterException(response.Error?.Message);
             }
-
-            _settings.UserToken = response.IdToken;
-            _settings.UserRefreshToken = response.RefreshToken;
         }
     }
 }

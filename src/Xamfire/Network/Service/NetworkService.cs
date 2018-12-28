@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using Xamfire.Json.Serializer.Document;
+using Xamfire.Document.Serializer;
 using Xamfire.Network.Responses;
 
 namespace Xamfire.Network.Service
@@ -16,9 +16,9 @@ namespace Xamfire.Network.Service
         private static readonly HttpClient _httpClient = new HttpClient();
         private static readonly NativeMessageHandler _nativeMessageHandler = new NativeMessageHandler();
 
-        private readonly IJsonDocumentSerializer _jsonDocumentSerializer;
+        private readonly IDocumentSerializer _jsonDocumentSerializer;
 
-        public NetworkService(IJsonDocumentSerializer jsonDocumentSerializer)
+        public NetworkService(IDocumentSerializer jsonDocumentSerializer)
         {
             _jsonDocumentSerializer = jsonDocumentSerializer;
         }

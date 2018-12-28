@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Xamfire.Contexts.Builders;
-using Xamfire.Contexts.Configurations;
-using Xamfire.Json.Serializer.ContractResolver;
-using Xamfire.Json.Serializer.Document;
+﻿using Xamfire.Document.Builders;
+using Xamfire.Document.Configurations;
+using Xamfire.Document.ContractResolver;
+using Xamfire.Document.Serializer;
 using Xamfire.Settings;
 using Xamfire.Tests.Integration.Mock;
 
@@ -18,12 +15,12 @@ namespace Xamfire.Tests.Integration
         {
             var modelConfiguration = GetModelConfiguration();
             var contactResolver = new DocumentContractResolver<TModel>(modelConfiguration);
-            var jsonSerializer = new JsonDocumentSerializer();
+            var jsonSerializer = new DocumentSerializer();
             var documentBuilder = new DocumentModelBuilder<TModel>(jsonSerializer, FirebaseSettingsMock);
 
             return documentBuilder;
         }
 
-        protected abstract IModelConfiguration<TModel> GetModelConfiguration();
+        protected abstract IDocumentConfiguration<TModel> GetModelConfiguration();
     }
 }

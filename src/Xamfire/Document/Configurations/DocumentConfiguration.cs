@@ -1,12 +1,12 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Text;
 using Xamfire.Extensions;
 
-namespace Xamfire.Contexts.Configurations
+namespace Xamfire.Document.Configurations
 {
-    public class ModelConfiguration<TModel> : IModelConfiguration<TModel>
+    public class ModelConfiguration<TModel> : IDocumentConfiguration<TModel>
     {
         public string DocumentPath { get; private set; }
         public IDictionary<string, string> PropertiesMappings { get; private set; }
@@ -17,20 +17,20 @@ namespace Xamfire.Contexts.Configurations
             PropertiesMappings = new Dictionary<string, string>();
         }
 
-        public IModelConfiguration<TModel> SetDocumentPath(string path)
+        public IDocumentConfiguration<TModel> SetDocumentPath(string path)
         {
             DocumentPath = path;
             return this;
         }
 
-        public IModelConfiguration<TModel> SetPropertyName<TProperty>(Expression<Func<TModel, TProperty>> property, string firebaseFieldName)
+        public IDocumentConfiguration<TModel> SetPropertyName<TProperty>(Expression<Func<TModel, TProperty>> property, string firebaseFieldName)
         {
             var propertyName = property.GetMemberInfo().Name;
             PropertiesMappings.Add(propertyName, firebaseFieldName);
             return this;
         }
 
-        public IModelConfiguration<TModel> SetPrimaryKey<TProperty>(Expression<Func<TModel, TProperty>> property)
+        public IDocumentConfiguration<TModel> SetPrimaryKey<TProperty>(Expression<Func<TModel, TProperty>> property)
         {
             PrimaryKeyPropertyName = property.GetMemberInfo().Name;
             return this;

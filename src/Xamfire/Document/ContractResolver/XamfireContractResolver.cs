@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json.Serialization;
+using Newtonsoft.Json.Serialization;
 using System.Collections.Generic;
 
-namespace Xamfire.Json.Serializer.ContractResolver
+namespace Xamfire.Document.ContractResolver
 {
     public abstract class XamfireContractResolver : DefaultContractResolver
     {

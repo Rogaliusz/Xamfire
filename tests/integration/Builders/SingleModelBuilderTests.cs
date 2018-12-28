@@ -1,9 +1,6 @@
 ﻿using FluentAssertions;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Text;
-using Xamfire.Contexts.Configurations;
+using Xamfire.Document.Configurations;
 using Xamfire.Tests.Common.Models;
 using Xunit;
 
@@ -29,7 +26,7 @@ namespace Xamfire.Tests.Integration.Builders
             model.Description.Should().Be(product.Description);
         }
 
-        protected override IModelConfiguration<Product> GetModelConfiguration()
+        protected override IDocumentConfiguration<Product> GetModelConfiguration()
         {
             return new ModelConfiguration<Product>()
                 .SetDocumentPath("products")

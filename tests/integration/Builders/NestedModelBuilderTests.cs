@@ -1,9 +1,6 @@
 ﻿using FluentAssertions;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Text;
-using Xamfire.Contexts.Configurations;
+using Xamfire.Document.Configurations;
 using Xamfire.Tests.Common.Models;
 using Xamfire.Tests.Integration.Samples;
 using Xunit;
@@ -27,7 +24,7 @@ namespace Xamfire.Tests.Integration.Builders
         }
 
 
-        protected override IModelConfiguration<User> GetModelConfiguration()
+        protected override IDocumentConfiguration<User> GetModelConfiguration()
         {
             return new ModelConfiguration<User>()
                 .SetDocumentPath("users")

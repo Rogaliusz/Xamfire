@@ -1,12 +1,9 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using Xamfire.Json.Serializer.ContractResolver;
+using Newtonsoft.Json;
+using Xamfire.Document.ContractResolver;
 
-namespace Xamfire.Json.Serializer.Document
+namespace Xamfire.Document.Serializer
 {
-    public class JsonDocumentSerializer : IJsonDocumentSerializer
+    public class DocumentSerializer : IDocumentSerializer
     {
         private JsonSerializerSettings JsonSettings => new JsonSerializerSettings
         {
@@ -26,7 +23,7 @@ namespace Xamfire.Json.Serializer.Document
             return JsonConvert.SerializeObject(model, JsonSettings);
         }
 
-        public IJsonDocumentSerializer SetContractResolver(XamfireContractResolver xamfireContractResolver)
+        public IDocumentSerializer SetContractResolver(XamfireContractResolver xamfireContractResolver)
         {
             _contractResolver = xamfireContractResolver;
 

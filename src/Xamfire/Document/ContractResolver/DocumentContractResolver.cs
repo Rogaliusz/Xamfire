@@ -1,18 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
 using System.Reflection;
-using System.Text;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
-using Xamfire.Contexts.Configurations;
+using Xamfire.Document.Configurations;
 
-namespace Xamfire.Json.Serializer.ContractResolver
+namespace Xamfire.Document.ContractResolver
 {
     public class DocumentContractResolver<TModel> : XamfireContractResolver
     {
-        private IModelConfiguration<TModel> _modelConfiguration;
+        private IDocumentConfiguration<TModel> _modelConfiguration;
 
-        public DocumentContractResolver(IModelConfiguration<TModel> modelConfiguration)
+        public DocumentContractResolver(IDocumentConfiguration<TModel> modelConfiguration)
         {
             NamingStrategy = new CamelCaseNamingStrategy();
 
