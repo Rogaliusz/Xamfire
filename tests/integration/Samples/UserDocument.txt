@@ -1,20 +1,20 @@
 ﻿{
-  "name": "Janusz",
-  "products": [
-    {
-      "name": "Awesome product",
-      "description": "My awesome product for first milion Polskich dolarów",
-      "count": 11
-    },
-    {
-      "name": "Super product",
-      "description": "My super product for first milion Polskich dolarów",
-      "count": 0
-    },
-    {
-      "name": "Oh Product",
-      "description": "My oh product for first milion Polskich dolarów",
-      "count": 5
-    }
-  ]
+   "name":"Janusz",
+   "products":{
+      "8c3f2669-18a1-448c-8a46-e2fe56a2fd8f":{
+         "name":"Awesome product",
+         "description":"My awesome product for first milion Polskich dolarów",
+         "count":11
+      },
+      "f1bdab0c-bef6-415b-8691-6eeaaeebba93":{
+         "name":"Super product",
+         "description":"My super product for first milion Polskich dolarów",
+         "count":0
+      },
+      "db758a16-4a55-40d6-b18a-f59fc2d7b3de":{
+         "name":"Oh Product",
+         "description":"My oh product for first milion Polskich dolarów",
+         "count":5
+      }
+   }
 }

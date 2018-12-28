@@ -53,7 +53,7 @@ namespace Xamfire.Tests.Integration.Builders
 
         protected override IDocumentConfiguration<Product> GetModelConfiguration()
         {
-            return new ModelConfiguration<Product>()
+            return new DocumentConfiguration<Product>()
                 .SetDocumentPath("products")
                 .SetPrimaryKey( product => product.Id);
         }

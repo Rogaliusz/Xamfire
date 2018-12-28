@@ -6,15 +6,21 @@ using Xamfire.Extensions;
 
 namespace Xamfire.Document.Configurations
 {
-    public class ModelConfiguration<TModel> : IDocumentConfiguration<TModel>
+    public class DocumentConfiguration<TModel> : IDocumentConfiguration<TModel>
     {
+        private readonly IList<IChildDocumentConfiguration<TModel, object>> _childrens;
+        private readonly Dictionary<string, string> _propertiesMappings;
+
         public string DocumentPath { get; private set; }
-        public IDictionary<string, string> PropertiesMappings { get; private set; }
         public string PrimaryKeyPropertyName { get; private set; }
 
-        public ModelConfiguration()
+        public IReadOnlyDictionary<string, string> PropertiesMappings => _propertiesMappings;
+        public IEnumerable<IChildDocumentConfiguration<TModel, object>> Childrens => _childrens;
+
+        public DocumentConfiguration()
         {
-            PropertiesMappings = new Dictionary<string, string>();
+            _childrens = new List<IChildDocumentConfiguration<TModel, object>>();
+            _propertiesMappings = new Dictionary<string, string>();
         }
 
         public IDocumentConfiguration<TModel> SetDocumentPath(string path)
@@ -26,7 +32,7 @@ namespace Xamfire.Document.Configurations
         public IDocumentConfiguration<TModel> SetPropertyName<TProperty>(Expression<Func<TModel, TProperty>> property, string firebaseFieldName)
         {
             var propertyName = property.GetMemberInfo().Name;
-            PropertiesMappings.Add(propertyName, firebaseFieldName);
+            _propertiesMappings.Add(propertyName, firebaseFieldName);
             return this;
         }
 
@@ -34,6 +40,14 @@ namespace Xamfire.Document.Configurations
         {
             PrimaryKeyPropertyName = property.GetMemberInfo().Name;
             return this;
+        }
+
+        public IChildDocumentConfiguration<TModel, TChildModel> SetupChildConfiguration<TChildModel>(Expression<Func<TModel, TChildModel>> property)
+        {
+            var childName = property.GetMemberInfo().Name;
+            var childDocumentConfiguration = new ChildDocumentConfiguration<TModel, TChildModel>(this, childName);
+
+            return childDocumentConfiguration;
         }
     }
 }

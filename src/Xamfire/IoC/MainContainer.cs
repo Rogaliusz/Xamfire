@@ -23,7 +23,7 @@ namespace Xamfire.IoC
             Container.Register<IDocumentSerializer, DocumentSerializer>().AsMultiInstance();
 
             Container.Register(typeof(IDocumentModelBuilder<>), typeof(DocumentModelBuilder<>)).AsMultiInstance();
-            Container.Register(typeof(IDocumentConfiguration<>), typeof(ModelConfiguration<>)).AsMultiInstance();
+            Container.Register(typeof(IDocumentConfiguration<>), typeof(DocumentConfiguration<>)).AsMultiInstance();
             Container.Register(typeof(XamfireContractResolver), typeof(DocumentContractResolver<>)).AsMultiInstance();
         }
 

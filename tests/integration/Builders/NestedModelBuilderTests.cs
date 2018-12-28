@@ -26,7 +26,7 @@ namespace Xamfire.Tests.Integration.Builders
 
         protected override IDocumentConfiguration<User> GetModelConfiguration()
         {
-            return new ModelConfiguration<User>()
+            return new DocumentConfiguration<User>()
                 .SetDocumentPath("users")
                 .SetPrimaryKey(user => user.Id);
         }

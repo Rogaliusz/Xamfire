@@ -55,10 +55,5 @@ namespace Xamfire
 
             settings.Load();
         }
-
-        private static Exception InvalidConfigException()
-        {
-            throw new NotImplementedException();
-        }
     }
 }
